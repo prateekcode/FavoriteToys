@@ -7,4 +7,7 @@
 
     <!-- For Recycler Activity -->
     <string name="action_reset">Reset</string>
+    
+    <!--For Child Activity class -->
+    <string name="child_message">This is default text</string>
 </resources>

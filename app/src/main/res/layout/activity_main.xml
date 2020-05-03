@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -40,11 +41,43 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_entry_text"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:hint="Enter what you want to show!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/open_explicit_intent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="end"
+            android:padding="16dp"
+            android:text="Explicit Intent"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
     </LinearLayout>
 
 
 
     <ScrollView
+
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
