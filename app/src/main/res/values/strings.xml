@@ -4,4 +4,7 @@
     <!--For Github Query Activity-->
     <string name="search">Search</string>
     <string name="error_message">Error occur, Please Try Again!</string>
+
+    <!-- For Recycler Activity -->
+    <string name="action_reset">Reset</string>
 </resources>

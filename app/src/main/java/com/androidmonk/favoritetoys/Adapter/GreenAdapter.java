@@ -11,15 +11,26 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidmonk.favoritetoys.R;
+import com.androidmonk.favoritetoys.utilities.ColorUtils;
 
 public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHolder> {
 
     private static final String TAG = GreenAdapter.class.getSimpleName();
 
+    final private ListItemClickListener mOnClickListener;
+
+    private static int viewHolderCount;
+
     private int mNumberItems;
 
-    public GreenAdapter(int numberOfItems) {
+    public interface ListItemClickListener{
+        void onListItemClick(int clickedItem);
+    }
+
+    public GreenAdapter(int numberOfItems, ListItemClickListener listener) {
         mNumberItems = numberOfItems;
+        mOnClickListener = listener;
+        viewHolderCount = 0;
     }
 
     @NonNull
@@ -32,6 +43,12 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
 
         View view = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
         NumberViewHolder viewHolder = new NumberViewHolder(view);
+
+        int backgroundColorForViewHolder = ColorUtils
+                .getViewHolderBackgroundColorFromInstance(context, viewHolderCount);
+        viewHolder.itemView.setBackgroundColor(backgroundColorForViewHolder);
+
+        viewHolderCount++;
 
         return viewHolder;
     }
@@ -47,10 +64,12 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
         return mNumberItems;
     }
 
-    public class NumberViewHolder extends RecyclerView.ViewHolder {
+    public class NumberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // Will display the position in the list, ie 0 through getItemCount() - 1
 
         TextView listItemNumberView;
+
+        TextView viewHolderIndex;
 
         /**
          * Constructor for our ViewHolder. Within this constructor, we get a reference to our
@@ -63,10 +82,18 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
         public NumberViewHolder(@NonNull View itemView) {
             super(itemView);
             listItemNumberView = (TextView) itemView.findViewById(R.id.tv_item_number);
+            viewHolderIndex = (TextView) itemView.findViewById(R.id.tv_view_holder_instance);
+            itemView.setOnClickListener(this);
         }
 
         void bind(int listIndex) {
             listItemNumberView.setText(String.valueOf(listIndex));
+        }
+
+        @Override
+        public void onClick(View v) {
+            int clickedPosition = getAdapterPosition();
+            mOnClickListener.onListItemClick(clickedPosition);
         }
     }
 }
