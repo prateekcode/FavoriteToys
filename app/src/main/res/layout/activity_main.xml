@@ -75,6 +75,21 @@
     </LinearLayout>
 
 
+    <Button
+        android:id="@+id/open_android_lifecycle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:text="Activity Lifecycle"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+
 
     <ScrollView
 

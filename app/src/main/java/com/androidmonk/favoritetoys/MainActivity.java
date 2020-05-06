@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mToysListTextView;
     private EditText mEntryText;
-    private Button mOpenGithubProject, mOpenRecyclerView, mDoExplicit;
+    private Button mOpenGithubProject, mOpenRecyclerView, mDoExplicit, mLifecycleAndroid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, RecyclerActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mLifecycleAndroid = findViewById(R.id.open_android_lifecycle);
+        mLifecycleAndroid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LifecycleActivity.class);
                 startActivity(intent);
             }
         });

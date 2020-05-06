@@ -44,6 +44,7 @@ public class ChildActivity extends AppCompatActivity {
                 .query(addressString);
         Uri addressUri = builder.build();
         showMap(addressUri);
+        
 
         Toast.makeText(this, "Open Location in Map", Toast.LENGTH_SHORT).show();
     }
