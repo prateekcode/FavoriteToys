@@ -102,13 +102,20 @@ public class GithubActivity extends AppCompatActivity implements LoaderManager.L
     public Loader<String> onCreateLoader(int id, @Nullable final Bundle args) {
         return new AsyncTaskLoader<String>(this) {
 
+            String mGithubJson;
+
             @Override
             protected void onStartLoading() {
                 if (args == null){
                     return;
                 }
-                mLoadingJson.setVisibility(View.VISIBLE);
-                forceLoad();
+                if (mGithubJson!=null){
+                    deliverResult(mGithubJson);
+                }else {
+                    mLoadingJson.setVisibility(View.VISIBLE);
+                    forceLoad();
+                }
+
             }
 
             @Nullable
@@ -129,6 +136,12 @@ public class GithubActivity extends AppCompatActivity implements LoaderManager.L
                     return null;
                 }
 
+            }
+
+            @Override
+            public void deliverResult(@Nullable String githubJson) {
+                mGithubJson = githubJson;
+                super.deliverResult(githubJson);
             }
         };
     }
